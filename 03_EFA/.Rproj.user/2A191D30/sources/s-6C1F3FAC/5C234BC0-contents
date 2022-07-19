@@ -1,0 +1,151 @@
+---
+title: "Survey 4 - CFA+ConstructValidation+Reliability"
+author: "Tingying He"
+date: "3/27/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# import library
+library(lavaan) #CFA
+library(ltm) # Cronbach's alpha
+```
+
+```{r}
+# import data
+data <- read.csv("/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/survey results with PID/validation results + demographics - valid.csv" , encoding="UTF-8")
+```
+
+```{r}
+# split data
+# results for Sunburst - our scale
+data_sun <- data[, c('sunburst.enjoyable.', 'sunburst.likable.', 'sunburst.pleasing.', 'sunburst.nice.', 'sunburst.appealing.')]
+# results for Sunburst - classic aesthetic for website scale
+data_sun_ca <- data[, c('sunburst.aesthetic.', 'sunburst.pleasant.', 'sunburst.clear.', 'sunburst.clean.', 'sunburst.symmetric.')]
+
+# results for Beamtree - our scale
+data_beam <- data[, c('beamtree.enjoyable.', 'beamtree.likable.', 'beamtree.pleasing.', 'beamtree.nice.', 'beamtree.appealing.')]
+# results for Beamtree - classic aesthetic for website scale
+data_beam_ca <- data[, c('beamtree.aesthetic.', 'beamtree.pleasant.', 'beamtree.clear.', 'beamtree.clean.', 'beamtree.symmetric.')]
+
+# results for Startree - our scale
+data_star <- data[, c('startree.enjoyable.', 'startree.likable.', 'startree.pleasing.', 'startree.nice.', 'startree.appealing.')]
+# results for Startree - classic aesthetic for website scale
+data_star_ca <- data[, c('startree.aesthetic.', 'startree.pleasant.', 'startree.clear.', 'startree.clean.', 'startree.symmetric.')]
+```
+
+```{r}
+#Clean the column name function
+cleanColnames <- function(data, visName){
+  # delete visName and . from column name of dataframe, only keep the terms as column name
+  names(data) <- sub(paste(visName, ".", sep =""), "", names(data))
+  names(data) <- sub("\\.", "", names(data))
+  return(data)
+}
+```
+
+```{r}
+# Clean column names for all data
+data_sun <- cleanColnames(data_sun, "sunburst")
+data_sun_ca <- cleanColnames(data_sun_ca, "sunburst")
+data_beam <- cleanColnames(data_beam, "beamtree")
+data_beam_ca <- cleanColnames(data_beam_ca, "beamtree")
+data_star <- cleanColnames(data_star, "startree")
+data_star_ca <- cleanColnames(data_star_ca, "startree")
+```
+
+```{r}
+write.csv(data_sun,"/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/aestheticpleasurescale/CFA/data/sunburst.csv", row.names = FALSE)
+write.csv(data_sun_ca,"/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/aestheticpleasurescale/CFA/data/sunburst_ca.csv", row.names = FALSE)
+write.csv(data_star,"/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/aestheticpleasurescale/CFA/data/startree.csv", row.names = FALSE)
+write.csv(data_star_ca,"/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/aestheticpleasurescale/CFA/data/startree_ca.csv", row.names = FALSE)
+write.csv(data_beam,"/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/aestheticpleasurescale/CFA/data/beamtree.csv", row.names = FALSE)
+write.csv(data_beam_ca,"/Users/tingyinghe/Dropbox/PhD/validated-scale-for-vis-design/aestheticpleasurescale/CFA/data/beamtree_ca.csv", row.names = FALSE)
+```
+
+
+## Confirmatory Factor Analysis
+
+
+```{r}
+CFA <- function(data){
+  APV.model ='aesthetic_pleasure =~ enjoyable + likable + pleasing + nice + appealing'
+  fit <- cfa(APV.model,data = data,std.lv = TRUE)
+  summary(fit, fit.measures=T, standardized=TRUE)
+}
+```
+
+## Convergent Validity
+```{r}
+con_vali <- function(data1, data2){ # results of two scales you want to calculate correlation
+  cor.test(rowMeans(data1), rowMeans(data2), method = "pearson")
+}
+```
+
+## Discrinminant Validity
+```{r}
+dis_vali <- function(data1){ # result of your scale
+  cor.test(rowMeans(data1), data$age , method = "pearson")
+}
+```
+
+
+# Sunburst
+```{r}
+CFA(data_sun)
+```
+
+```{r}
+con_vali(data_sun, data_sun_ca)
+```
+
+```{r}
+dis_vali(data_sun)
+```
+
+
+```{r}
+cronbach.alpha(data_sun)
+```
+
+# Startree
+```{r}
+CFA(data_star)
+```
+
+```{r}
+con_vali(data_star, data_star_ca)
+```
+
+```{r}
+dis_vali(data_star)
+```
+
+
+```{r}
+cronbach.alpha(data_star)
+```
+
+# Beamtree
+```{r}
+CFA(data_beam)
+```
+
+```{r}
+con_vali(data_beam, data_beam_ca)
+```
+
+```{r}
+dis_vali(data_beam)
+```
+
+```{r}
+cronbach.alpha(data_beam)
+```
+
+
+

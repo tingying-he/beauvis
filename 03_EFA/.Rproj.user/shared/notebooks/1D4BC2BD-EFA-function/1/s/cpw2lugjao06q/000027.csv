@@ -1,0 +1,143 @@
+"1","Parallel analysis suggests that "
+"1","the number of factors = "
+"1"," "
+"1","2"
+"1"," "
+"1"," and the number of components = "
+"1"," "
+"1","NA"
+"1"," "
+"1","
+"
+"1","
+
+"
+"1","
+
+"
+"1","## Exploratory Factor Analysis - 1 Factor - No Rotation
+"
+"1","<!-- html table generated in R 4.1.3 by xtable 1.8-4 package -->
+<!-- Fri Mar 25 08:45:26 2022 -->
+<table border=1>
+<tr> <th>  </th> <th> PA1 </th>  </tr>
+  <tr> <td align=""right""> appealing </td> <td align=""right""> 0.80 </td> </tr>
+  <tr> <td align=""right""> artistic </td> <td align=""right""> 0.49 </td> </tr>
+  <tr> <td align=""right""> attractive </td> <td align=""right""> 0.78 </td> </tr>
+  <tr> <td align=""right""> balanced </td> <td align=""right""> 0.63 </td> </tr>
+  <tr> <td align=""right""> beautiful </td> <td align=""right""> 0.77 </td> </tr>
+  <tr> <td align=""right""> clean </td> <td align=""right""> 0.70 </td> </tr>
+  <tr> <td align=""right""> cluttered </td> <td align=""right""> -0.33 </td> </tr>
+  <tr> <td align=""right""> colorHarmonious </td> <td align=""right""> 0.59 </td> </tr>
+  <tr> <td align=""right""> creative </td> <td align=""right""> 0.49 </td> </tr>
+  <tr> <td align=""right""> delightful </td> <td align=""right""> 0.74 </td> </tr>
+  <tr> <td align=""right""> elegant </td> <td align=""right""> 0.76 </td> </tr>
+  <tr> <td align=""right""> engaging </td> <td align=""right""> 0.70 </td> </tr>
+  <tr> <td align=""right""> enjoyable </td> <td align=""right""> 0.78 </td> </tr>
+  <tr> <td align=""right""> exciting </td> <td align=""right""> 0.66 </td> </tr>
+  <tr> <td align=""right""> fascinating </td> <td align=""right""> 0.64 </td> </tr>
+  <tr> <td align=""right""> harmonious </td> <td align=""right""> 0.69 </td> </tr>
+  <tr> <td align=""right""> interesting </td> <td align=""right""> 0.70 </td> </tr>
+  <tr> <td align=""right""> inviting </td> <td align=""right""> 0.74 </td> </tr>
+  <tr> <td align=""right""> likable </td> <td align=""right""> 0.79 </td> </tr>
+  <tr> <td align=""right""> lovely </td> <td align=""right""> 0.75 </td> </tr>
+  <tr> <td align=""right""> motivating </td> <td align=""right""> 0.65 </td> </tr>
+  <tr> <td align=""right""> nice </td> <td align=""right""> 0.81 </td> </tr>
+  <tr> <td align=""right""> organized </td> <td align=""right""> 0.61 </td> </tr>
+  <tr> <td align=""right""> pleasing </td> <td align=""right""> 0.80 </td> </tr>
+  <tr> <td align=""right""> pretty </td> <td align=""right""> 0.76 </td> </tr>
+  <tr> <td align=""right""> professional </td> <td align=""right""> 0.67 </td> </tr>
+  <tr> <td align=""right""> provoking </td> <td align=""right""> 0.20 </td> </tr>
+  <tr> <td align=""right""> satisfying </td> <td align=""right""> 0.73 </td> </tr>
+  <tr> <td align=""right""> sophisticated </td> <td align=""right""> 0.63 </td> </tr>
+  <tr> <td align=""right""> tasteful </td> <td align=""right""> 0.64 </td> </tr>
+  <tr> <td align=""right""> wellDesigned </td> <td align=""right""> 0.71 </td> </tr>
+   </table>
+"
+"1","
+
+"
+"1","## Exploratory Factor Analysis - 2 Factors - Varimax Rotation(Orthogonal rotation)
+"
+"1","<!-- html table generated in R 4.1.3 by xtable 1.8-4 package -->
+<!-- Fri Mar 25 08:45:26 2022 -->
+<table border=1>
+<tr> <th>  </th> <th> PA1 </th> <th> PA2 </th>  </tr>
+  <tr> <td align=""right""> appealing </td> <td align=""right""> 0.61 </td> <td align=""right""> 0.52 </td> </tr>
+  <tr> <td align=""right""> artistic </td> <td align=""right""> 0.06 </td> <td align=""right""> 0.68 </td> </tr>
+  <tr> <td align=""right""> attractive </td> <td align=""right""> 0.57 </td> <td align=""right""> 0.52 </td> </tr>
+  <tr> <td align=""right""> balanced </td> <td align=""right""> 0.73 </td> <td align=""right""> 0.14 </td> </tr>
+  <tr> <td align=""right""> beautiful </td> <td align=""right""> 0.46 </td> <td align=""right""> 0.64 </td> </tr>
+  <tr> <td align=""right""> clean </td> <td align=""right""> 0.77 </td> <td align=""right""> 0.19 </td> </tr>
+  <tr> <td align=""right""> cluttered </td> <td align=""right""> -0.46 </td> <td align=""right""> 0.02 </td> </tr>
+  <tr> <td align=""right""> colorHarmonious </td> <td align=""right""> 0.67 </td> <td align=""right""> 0.14 </td> </tr>
+  <tr> <td align=""right""> creative </td> <td align=""right""> 0.07 </td> <td align=""right""> 0.67 </td> </tr>
+  <tr> <td align=""right""> delightful </td> <td align=""right""> 0.41 </td> <td align=""right""> 0.66 </td> </tr>
+  <tr> <td align=""right""> elegant </td> <td align=""right""> 0.51 </td> <td align=""right""> 0.56 </td> </tr>
+  <tr> <td align=""right""> engaging </td> <td align=""right""> 0.40 </td> <td align=""right""> 0.60 </td> </tr>
+  <tr> <td align=""right""> enjoyable </td> <td align=""right""> 0.58 </td> <td align=""right""> 0.51 </td> </tr>
+  <tr> <td align=""right""> exciting </td> <td align=""right""> 0.20 </td> <td align=""right""> 0.79 </td> </tr>
+  <tr> <td align=""right""> fascinating </td> <td align=""right""> 0.21 </td> <td align=""right""> 0.74 </td> </tr>
+  <tr> <td align=""right""> harmonious </td> <td align=""right""> 0.68 </td> <td align=""right""> 0.28 </td> </tr>
+  <tr> <td align=""right""> interesting </td> <td align=""right""> 0.48 </td> <td align=""right""> 0.52 </td> </tr>
+  <tr> <td align=""right""> inviting </td> <td align=""right""> 0.41 </td> <td align=""right""> 0.65 </td> </tr>
+  <tr> <td align=""right""> likable </td> <td align=""right""> 0.72 </td> <td align=""right""> 0.38 </td> </tr>
+  <tr> <td align=""right""> lovely </td> <td align=""right""> 0.47 </td> <td align=""right""> 0.59 </td> </tr>
+  <tr> <td align=""right""> motivating </td> <td align=""right""> 0.27 </td> <td align=""right""> 0.69 </td> </tr>
+  <tr> <td align=""right""> nice </td> <td align=""right""> 0.75 </td> <td align=""right""> 0.37 </td> </tr>
+  <tr> <td align=""right""> organized </td> <td align=""right""> 0.79 </td> <td align=""right""> 0.05 </td> </tr>
+  <tr> <td align=""right""> pleasing </td> <td align=""right""> 0.67 </td> <td align=""right""> 0.46 </td> </tr>
+  <tr> <td align=""right""> pretty </td> <td align=""right""> 0.53 </td> <td align=""right""> 0.54 </td> </tr>
+  <tr> <td align=""right""> professional </td> <td align=""right""> 0.75 </td> <td align=""right""> 0.17 </td> </tr>
+  <tr> <td align=""right""> provoking </td> <td align=""right""> -0.06 </td> <td align=""right""> 0.37 </td> </tr>
+  <tr> <td align=""right""> satisfying </td> <td align=""right""> 0.61 </td> <td align=""right""> 0.42 </td> </tr>
+  <tr> <td align=""right""> sophisticated </td> <td align=""right""> 0.30 </td> <td align=""right""> 0.60 </td> </tr>
+  <tr> <td align=""right""> tasteful </td> <td align=""right""> 0.58 </td> <td align=""right""> 0.32 </td> </tr>
+  <tr> <td align=""right""> wellDesigned </td> <td align=""right""> 0.68 </td> <td align=""right""> 0.30 </td> </tr>
+   </table>
+"
+"1","
+
+"
+"1","## Exploratory Factor Analysis - 2 Factors - Promax Rotation(Pblique rotation)
+"
+"1","<!-- html table generated in R 4.1.3 by xtable 1.8-4 package -->
+<!-- Fri Mar 25 08:45:27 2022 -->
+<table border=1>
+<tr> <th>  </th> <th> PA1 </th> <th> PA2 </th>  </tr>
+  <tr> <td align=""right""> appealing </td> <td align=""right""> 0.75 </td> <td align=""right""> 0.69 </td> </tr>
+  <tr> <td align=""right""> artistic </td> <td align=""right""> 0.28 </td> <td align=""right""> 0.66 </td> </tr>
+  <tr> <td align=""right""> attractive </td> <td align=""right""> 0.71 </td> <td align=""right""> 0.68 </td> </tr>
+  <tr> <td align=""right""> balanced </td> <td align=""right""> 0.73 </td> <td align=""right""> 0.37 </td> </tr>
+  <tr> <td align=""right""> beautiful </td> <td align=""right""> 0.65 </td> <td align=""right""> 0.75 </td> </tr>
+  <tr> <td align=""right""> clean </td> <td align=""right""> 0.79 </td> <td align=""right""> 0.44 </td> </tr>
+  <tr> <td align=""right""> cluttered </td> <td align=""right""> -0.42 </td> <td align=""right""> -0.14 </td> </tr>
+  <tr> <td align=""right""> colorHarmonious </td> <td align=""right""> 0.68 </td> <td align=""right""> 0.36 </td> </tr>
+  <tr> <td align=""right""> creative </td> <td align=""right""> 0.29 </td> <td align=""right""> 0.65 </td> </tr>
+  <tr> <td align=""right""> delightful </td> <td align=""right""> 0.60 </td> <td align=""right""> 0.76 </td> </tr>
+  <tr> <td align=""right""> elegant </td> <td align=""right""> 0.67 </td> <td align=""right""> 0.70 </td> </tr>
+  <tr> <td align=""right""> engaging </td> <td align=""right""> 0.58 </td> <td align=""right""> 0.70 </td> </tr>
+  <tr> <td align=""right""> enjoyable </td> <td align=""right""> 0.72 </td> <td align=""right""> 0.68 </td> </tr>
+  <tr> <td align=""right""> exciting </td> <td align=""right""> 0.45 </td> <td align=""right""> 0.81 </td> </tr>
+  <tr> <td align=""right""> fascinating </td> <td align=""right""> 0.45 </td> <td align=""right""> 0.77 </td> </tr>
+  <tr> <td align=""right""> harmonious </td> <td align=""right""> 0.73 </td> <td align=""right""> 0.49 </td> </tr>
+  <tr> <td align=""right""> interesting </td> <td align=""right""> 0.62 </td> <td align=""right""> 0.65 </td> </tr>
+  <tr> <td align=""right""> inviting </td> <td align=""right""> 0.60 </td> <td align=""right""> 0.75 </td> </tr>
+  <tr> <td align=""right""> likable </td> <td align=""right""> 0.80 </td> <td align=""right""> 0.60 </td> </tr>
+  <tr> <td align=""right""> lovely </td> <td align=""right""> 0.64 </td> <td align=""right""> 0.72 </td> </tr>
+  <tr> <td align=""right""> motivating </td> <td align=""right""> 0.48 </td> <td align=""right""> 0.74 </td> </tr>
+  <tr> <td align=""right""> nice </td> <td align=""right""> 0.83 </td> <td align=""right""> 0.60 </td> </tr>
+  <tr> <td align=""right""> organized </td> <td align=""right""> 0.76 </td> <td align=""right""> 0.31 </td> </tr>
+  <tr> <td align=""right""> pleasing </td> <td align=""right""> 0.78 </td> <td align=""right""> 0.65 </td> </tr>
+  <tr> <td align=""right""> pretty </td> <td align=""right""> 0.68 </td> <td align=""right""> 0.68 </td> </tr>
+  <tr> <td align=""right""> professional </td> <td align=""right""> 0.77 </td> <td align=""right""> 0.41 </td> </tr>
+  <tr> <td align=""right""> provoking </td> <td align=""right""> 0.07 </td> <td align=""right""> 0.33 </td> </tr>
+  <tr> <td align=""right""> satisfying </td> <td align=""right""> 0.71 </td> <td align=""right""> 0.60 </td> </tr>
+  <tr> <td align=""right""> sophisticated </td> <td align=""right""> 0.49 </td> <td align=""right""> 0.67 </td> </tr>
+  <tr> <td align=""right""> tasteful </td> <td align=""right""> 0.65 </td> <td align=""right""> 0.49 </td> </tr>
+  <tr> <td align=""right""> wellDesigned </td> <td align=""right""> 0.74 </td> <td align=""right""> 0.51 </td> </tr>
+   </table>
+"
+"1","
+
+"

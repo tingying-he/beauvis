@@ -1,0 +1,13 @@
+"0","  parallel <- fa.parallel(correlation(num,data), n.obs=nrow(data), fa=""fa"", n.iter=100, main=""Scree plots with parallel analysis"")
+"
+"1","Parallel analysis suggests that "
+"1","the number of factors = "
+"1"," "
+"1","2"
+"1"," "
+"1"," and the number of components = "
+"1"," "
+"1","NA"
+"1"," "
+"1","
+"

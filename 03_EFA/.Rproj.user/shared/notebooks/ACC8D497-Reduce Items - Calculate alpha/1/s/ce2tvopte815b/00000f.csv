@@ -1,0 +1,25 @@
+"0","library(ltm)
+"
+"2","Loading required package: MASS
+"
+"2","Loading required package: msm
+"
+"2","Loading required package: polycor
+"
+"0","library(ltm)"
+"0","library(psych)"
+"2","
+Attaching package: ‘psych’
+
+"
+"2","The following object is masked from ‘package:ltm’:
+
+    factor.scores
+
+"
+"2","The following object is masked from ‘package:polycor’:
+
+    polyserial
+
+"
+"0","library(xtable)"

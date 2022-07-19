@@ -1,0 +1,89 @@
+---
+title: "Reduce Items - Calculate Alpha"
+author: "Tingying He, Petra Isenberg"
+date: "3/24/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Setting Up
+First let's load libraries
+```{r}
+library(ltm)
+library(psych)
+library(xtable)
+```
+
+Then let's load the files we need
+```{r}
+participantResponseFiles <- list.files(path= "./data",pattern = "\\.csv$") #names correspond to images, one participant per row, one word per column
+remainingTerms <- read.csv("./generatedData-EFA/factorLoadingsAbove_.7_all_images.tsv",sep="\t")$terms
+```
+
+# Defining Functions
+Now let's define some functions.
+
+This first one makes the column names cleaner by removing the image name
+```{r}
+cleanColnames <- function(data){
+  newNames <- gsub("^.+?\\.(.+?)\\..*$", "\\1", colnames(data))
+  return(newNames)
+}
+```
+
+This one does the bulk of the work. It calculates the Crohnbach alphas for all subsets of size minListSize to maxListSize for the remaining terms. The remainingTerms are calculated from the EFA-function.RmD script. So if you haven't run it yet do that now.
+```{r}
+optimizeList<-function(minListSize,maxListSize){
+
+  imageCount <- length(participantResponseFiles)
+  
+  for (listSize in minListSize:maxListSize){
+    
+    #print(paste("Working on List of size: ",listSize))
+    
+    alphaVector = c()
+    labelVector = c()
+    listSizeVector = c()
+    imageVector = c()
+
+    sets = combn(remainingTerms, listSize, simplify = FALSE)
+    setlength <- length(sets)
+
+    for (image in 1:imageCount){
+      #print(paste("  for image: ",image))
+      data <- read.csv(paste("data/",participantResponseFiles[[image]],sep=""), encoding="UTF-8")
+      terms <- cleanColnames(data) 
+      colnames(data) <- terms
+      
+      for (i in 1:setlength){
+        #reduce the matrix
+        subset <- sets[[i]]
+        datasubset <- data[subset]
+        alpha <- cronbach.alpha(datasubset)
+        label <- paste(subset, collapse = '-')
+        
+        alphaVector <- append(alphaVector,alpha[[1]])
+        labelVector <- append(labelVector,label)
+        listSizeVector <- append(listSizeVector,i)
+        imageVector <- append(imageVector,image)
+      }
+    }
+
+    df <- data.frame(terms=labelVector,alpha=alphaVector,itemCount=listSize,image=imageVector)
+    df <- df[order(-df$alpha),]
+    write.table(df,paste("generatedData-EFA/Scale_of_size_",paste(listSize,"_alphas.tsv",sep=""),sep=""),row.names=FALSE,sep='\t')
+    print(xtable(head(df)),type="html")
+  }
+}
+```
+
+# Main
+No magic here, we just run the code. The output is saved as .tsv files one for each set size, named: setsize_alphas.tsv
+```{r,results="asis"}
+optimizeList(2,5)
+```
+
+

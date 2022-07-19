@@ -1,0 +1,144 @@
+source("CI-Functions.R")
+
+participantResponseFiles <- list.files(pattern = "\\.csv$") #names correspond to images, one participant per row, one word per column
+
+
+cleanColnames <- function(data){
+  newNames <- gsub("^.+?\\.(.+?)\\..*$", "\\1", colnames(data))
+  return(newNames)
+}
+
+barChart <- function(resultTable, techniques, nbTechs = -1, ymin, ymax, xAxisLabel = "I am the X axis", yAxisLabel = "I am the Y Label",plotTitle){
+  #tr <- t(resultTable)
+  if(nbTechs <= 0){
+    stop('Please give a positive number of Techniques, nbTechs');
+  }
+  
+  tr <- as.data.frame(resultTable)
+  nbTechs <- nbTechs - 1 ; # seq will generate nb+1
+  
+  #now need to calculate one number for the width of the interval
+  tr$CI2 <- tr$upperBound_CI - tr$mean
+  tr$CI1 <- tr$mean - tr$lowerBound_CI
+  
+  #add a technique column
+  tr$technique <- factor(seq.int(0, nbTechs, 1));
+  
+  breaks <- c(as.character(tr$technique));
+  print(tr)
+  g <- ggplot(tr, aes(x=technique, y=mean)) + 
+    #   geom_bar(stat="identity",fill = I("#CCCCCC")) +
+    geom_errorbar(aes(ymin=mean-CI1, ymax=mean+CI2),
+                  width=0,                    # Width of the error bars
+                  size = 1.1
+    ) +
+    #labs(title="Overall time per technique") +
+    labs(x = xAxisLabel, y = yAxisLabel) + 
+    scale_y_continuous(limits = c(ymin,ymax),breaks=1:7) +
+    scale_x_discrete(name="",breaks,techniques)+
+    coord_flip() +
+    ggtitle(plotTitle) +
+    theme(panel.background = element_rect(fill = 'white', colour = 'white'),axis.title=element_text(size = rel(1.2), colour = "black"),axis.text=element_text(size = rel(1.2), colour = "black"),panel.grid.major = element_line(colour = "#DDDDDD"),panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())+
+    geom_point(size=2, colour="black")         # dots
+  
+  print(g)
+}
+
+calculateDrawResponseCIs <- function(scaleItems){
+
+  ## Average Ratings for the Test Scale (31 items)
+  imageCount <- length(participantResponseFiles)
+  pointEstimateVector = c()
+  lowerBoundVector = c()
+  upperBoundVector = c()
+  imageVector = c()
+  
+  for (image in 1:imageCount){
+  
+    data <- read.csv( participantResponseFiles[[image]], encoding="UTF-8")
+    terms <- cleanColnames(data) 
+    colnames(data) <- terms
+    
+    #exploratory trying to see what would happen if we had had a lot fewer participants
+    #data <- data[sample(nrow(data), 24), ]
+    
+    data <- data[scaleItems]
+  
+    means <- rowMeans(data)
+    
+    imageVector <- append(imageVector,image)
+    ci <- bootstrapMeanCI(means)
+    pointEstimateVector <- append(pointEstimateVector,ci[1])
+    upperBoundVector <- append(upperBoundVector,ci[3])
+    lowerBoundVector <- append(lowerBoundVector,ci[2])
+  }
+  
+  df <- data.frame(image=imageVector,mean=pointEstimateVector,lowerBound_CI=lowerBoundVector,upperBound_CI=upperBoundVector)
+  plotTitle <- paste(paste("Average Rating for the",length(scaleItems)),"item scale")
+  barChart(df,df$image ,nbTechs = 15, ymin = 1, ymax = 7, "Image", "Average Ratings",plotTitle)
+  ggsave(paste(plotTitle,".pdf",sep=""), width=8, height=4)
+  
+  print(df)
+  
+  return(df)
+}
+
+generatePerImageTables <-function(dfs,titles){
+  
+  imageCounts <- length(participantResponseFiles)
+  
+  
+  
+  for(i in 1:imageCounts){
+    pointEstimateVector = c()
+    lowerBoundVector = c()
+    upperBoundVector = c()
+    scaleVector = c()
+    
+    dflength <- length(dfs)
+    for(d in 1:dflength){
+      scaleVector <- append(scaleVector,titles[d])
+      df <- dfs[[d]]
+      
+      pointEstimateVector <- append(pointEstimateVector,df$mean[df$image==i])
+      upperBoundVector <- append(upperBoundVector,df$upperBound_CI[df$image==i])
+      lowerBoundVector <- append(lowerBoundVector,df$lowerBound_CI[df$image==i])
+    }
+    
+    df <- data.frame(scale=scaleVector,mean=pointEstimateVector,lowerBound_CI=lowerBoundVector,upperBound_CI=upperBoundVector)
+    plotTitle <- paste(paste("Image",i)," Ratings Per Scale")
+    barChart(df,df$scale ,nbTechs = dflength, ymin = 1, ymax = 7, "Image", "Average Ratings",plotTitle)
+    ggsave(paste(plotTitle,".pdf",sep=""), width=8, height=4)
+  }
+ 
+}
+
+## Average Ratings for the Test Scale
+data <- read.csv( participantResponseFiles[[1]], encoding="UTF-8")
+scaleItems <- cleanColnames(data)
+df31 <- calculateDrawResponseCIs(scaleItems)
+
+## Average Ratings for the 3-Item Scale
+scaleItems = c("enjoyable","likable","pleasing")
+df3 <- calculateDrawResponseCIs(scaleItems)
+
+## Average Ratings for the 4-Item Scale
+scaleItems = c("enjoyable","likable","pleasing","nice")
+df4 <- calculateDrawResponseCIs(scaleItems)
+
+## Average Ratings for the 5-Item Scale
+scaleItems = c("enjoyable","likable","pleasing","nice","appealing")
+df5 <- calculateDrawResponseCIs(scaleItems)
+
+dfs <- list(df3,df4,df5,df31)
+generatePerImageTables(list(df3,df4,df5,df31),c("3-Item","4-Item","5-Item","31-Item"))
+
+## Exploratory
+#Let's see how the CI will dance if we use just 1 item.
+#scaleItems = c("enjoyable")
+#calculateDrawResponseCIs(scaleItems)
+
+
+
+
+

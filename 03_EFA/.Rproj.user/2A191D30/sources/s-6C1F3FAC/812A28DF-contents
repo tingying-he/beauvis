@@ -1,0 +1,62 @@
+library(ltm)
+library(psych)
+
+participantResponseFiles <- list.files(pattern = "\\.csv$") #names correspond to images, one participant per row, one word per column
+remainingTerms <- read.csv("factorLoadingsAbove_.7_all_images.tsv",sep="\t")$terms
+
+cleanColnames <- function(data){
+  newNames <- gsub("^.+?\\.(.+?)\\..*$", "\\1", colnames(data))
+  return(newNames)
+}
+
+
+optimizeList<-function(minListSize,maxListSize){
+
+  imageCount <- length(participantResponseFiles)
+  
+  for (listSize in minListSize:maxListSize){
+    
+    print(paste("Working on List of size: ",listSize))
+    
+    alphaVector = c()
+    labelVector = c()
+    listSizeVector = c()
+    imageVector = c()
+
+    sets = combn(remainingTerms, listSize, simplify = FALSE)
+    setlength <- length(sets)
+
+    for (image in 1:imageCount){
+      print(paste("  for image: ",image))
+      data <- read.csv( participantResponseFiles[[image]], encoding="UTF-8")
+      terms <- cleanColnames(data) 
+      colnames(data) <- terms
+      
+      for (i in 1:setlength){
+        #reduce the matrix
+        subset <- sets[[i]]
+        datasubset <- data[subset]
+        alpha <- cronbach.alpha(datasubset)
+        label <- paste(subset, collapse = '-')
+        
+        alphaVector <- append(alphaVector,alpha[[1]])
+        labelVector <- append(labelVector,label)
+        listSizeVector <- append(listSizeVector,i)
+        imageVector <- append(imageVector,image)
+      }
+    }
+
+    df <- data.frame(terms=labelVector,alpha=alphaVector,itemCount=listSize,image=imageVector)
+    df <- df[order(-df$alpha),]
+    write.table(df,paste(listSize,"_alphas.tsv"),row.names=FALSE,sep='\t')
+    
+  }
+}
+
+
+#For debugging we can set the imageCount to whatever we want
+#imageCount <- 1
+optimizeList(2,5)
+
+
+

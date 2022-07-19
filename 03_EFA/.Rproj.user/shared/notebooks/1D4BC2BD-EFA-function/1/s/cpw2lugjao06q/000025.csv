@@ -1,0 +1,51 @@
+"1","
+
+"
+"1","### Bartlett’s test of sphericity
+"
+"1","The p value is below 0.05. We are good to continue."
+"1","
+
+"
+"1","$chisq
+"
+"1","[1]"
+"1"," 4310.973"
+"1","
+"
+"1","
+"
+"1","$p.value
+"
+"1","[1]"
+"1"," 0"
+"1","
+"
+"1","
+"
+"1","$df
+"
+"1","[1]"
+"1"," 465"
+"1","
+"
+"1","
+"
+"1","
+
+"
+"1","### KMO
+"
+"1","The overall measure of sampling adequacy is:  0.950837005739839"
+"1","
+
+"
+"1","The sampling adequacy is above 0.7. We are generally good."
+"1","
+
+"
+"1","
+
+"
+"1","## Scree Plot and Parallel Analysis
+"

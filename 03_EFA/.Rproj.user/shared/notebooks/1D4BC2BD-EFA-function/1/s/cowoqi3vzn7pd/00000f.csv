@@ -1,0 +1,4 @@
+"0","  image <- load.image(paste(""images/"",imageFiles[[num]],sep=""""))
+"
+"2","Error in imageFiles[[num]] : invalid subscript type 'closure'
+"
