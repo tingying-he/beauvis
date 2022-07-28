@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Summary
 
+
 ## EFA
 
 #Preparation
@@ -94,7 +95,7 @@ Measurement specialists have conducted simulation studies and concluded that par
 ```{r}
 parallelAnalysis <- function(num,data){
   
-  pdf(paste(paste("results/ScreePlot-Image_",num,sep=""),'.pdf'), width=8, height=4)
+  cairo_pdf(paste(paste("results/ScreePlot-Image_",num,sep=""),'.pdf'), width=8, height=4)
   parallel <- fa.parallel(correlation(num,data), n.obs=nrow(data), fa="fa", n.iter=100, main="Scree plots with parallel analysis")
   nfact <- parallel$nfact
   
@@ -204,13 +205,14 @@ for (i in 1:imageCount){
    efa_1factor <- analyze_image(i)[[1]] #we want to create a big table with all the factor loadings so we'll save the efa results here
    data <- NULL
    loadings <- as.data.frame(unclass(efa_1factor$loadings))
-   h2 <- efa_1factor$communalities
+   h2 <- efa_1factor$communality
    u2 <- efa_1factor$uniquenesses
    com <- efa_1factor$complexity
    data <- cbind(loadings, h2, u2, com)
    data <- tibble::rownames_to_column(data,"terms")
    data <- data %>% 
  mutate_if(is.numeric, round, digits=2)
+   data <- data %>% mutate_at(vars(com), funs(round(., 1)))
 
    write.table(data, paste("results/efa_1factor_image",i,".tsv",sep=""),row.names=FALSE,sep='\t') #create factor loading table
    
@@ -218,13 +220,14 @@ for (i in 1:imageCount){
    efa_2factors_varimax <- analyze_image(i)[[2]]
     data <- NULL
    loadings <- as.data.frame(unclass(efa_2factors_varimax$loadings))
-   h2 <- efa_2factors_varimax$communalities
+   h2 <- efa_2factors_varimax$communality
    u2 <- efa_2factors_varimax$uniquenesses
    com <- efa_2factors_varimax$complexity
    data <- cbind(loadings, h2, u2, com)
    data <- tibble::rownames_to_column(data,"terms")
    data <- data %>% 
  mutate_if(is.numeric, round, digits=2)
+   data <- data %>% mutate_at(vars(com), funs(round(., 1)))
 
    write.table(data, paste("results/efa_2factors_varimax_image",i,".tsv",sep=""),row.names=FALSE,sep='\t')
    
@@ -232,13 +235,14 @@ for (i in 1:imageCount){
    efa_2factors_promax <- analyze_image(i)[[3]]
     data <- NULL
    loadings <- as.data.frame(unclass(efa_2factors_promax$loadings))
-   h2 <- efa_2factors_promax$communalities
+   h2 <- efa_2factors_promax$communality
    u2 <- efa_2factors_promax$uniquenesses
    com <- efa_2factors_promax$complexity
    data <- cbind(loadings, h2, u2, com)
    data <- tibble::rownames_to_column(data,"terms")
    data <- data %>% 
  mutate_if(is.numeric, round, digits=2)
+   data <- data %>% mutate_at(vars(com), funs(round(., 1)))
 
    write.table(data, paste("results/efa_2factors_promax_image",i,".tsv",sep=""),row.names=FALSE,sep='\t')
    
@@ -386,7 +390,7 @@ calculateDrawResponseCIs <- function(scaleItems){
   df <- data.frame(image=imageVector,mean=pointEstimateVector,lowerBound_CI=lowerBoundVector,upperBound_CI=upperBoundVector)
   plotTitle <- paste(paste("Average Rating for the",length(scaleItems)),"item scale")
   barChart(df,df$image ,nbTechs = 15, ymin = 1, ymax = 7, "Image", "Average Ratings",plotTitle)
-  ggsave(paste("./results/",paste(plotTitle,".pdf",sep=""),sep=""), width=8, height=4)
+  ggsave(paste("./results/",paste(plotTitle,".pdf",sep=""),sep=""), width=8, height=4, device=cairo_pdf)
   
   print(df)
   
@@ -420,7 +424,7 @@ generatePerImageTables <-function(dfs,titles){
     barChart(df,df$scale ,nbTechs = dflength, ymin = 1, ymax = 7, "Image", "Average Ratings",plotTitle)
     path<-paste("./results/",paste(plotTitle,".pdf",sep=""),sep="")
     print(path)
-    ggsave(path, width=8, height=4)
+    ggsave(path, width=8, height=4,device=cairo_pdf)
   }
 }
 ```
@@ -468,7 +472,7 @@ library(ltm) # Cronbach's alpha
 
 ```{r}
 # import data
-data <- read.csv("04_CFA/validation results + demographics - valid.csv" , encoding="UTF-8")
+data <- read.csv("04_CFA/validation results + demographics - valid - PID removed.csv" , encoding="UTF-8")
 data
 ```
 
@@ -756,7 +760,7 @@ calculateDrawResponseCIs <- function(scaleItems){
   df <- data.frame(image=imageVector,mean=pointEstimateVector,lowerBound_CI=lowerBoundVector,upperBound_CI=upperBoundVector)
   plotTitle <- paste(paste("Average Rating for the",length(scaleItems)),"item scale")
   barChart(df,df$image ,nbTechs = imageCount, ymin = 1, ymax = 7, "Image", "Average Ratings",plotTitle)
-  ggsave(paste("results/",paste(plotTitle,".pdf",sep=""),sep=""), width=8, height=4)
+  ggsave(paste("results/",paste(plotTitle,".pdf",sep=""),sep=""), width=8, height=4,device=cairo_pdf)
   
   print(df)
   
@@ -790,7 +794,7 @@ generatePerImageTables <-function(dfs,titles){
     barChart(df,df$scale ,nbTechs = dflength, ymin = 1, ymax = 7, "Image", "Average Ratings",plotTitle)
     path<-paste("results/",paste(plotTitle,".pdf",sep=""),sep="")
     print(path)
-    ggsave(path, width=8, height=4)
+    ggsave(path, width=8, height=4,device=cairo_pdf)
   }
 }
 ```
