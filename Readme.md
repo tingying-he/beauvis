@@ -54,5 +54,15 @@ To install these required packages, run the following call from a command line:
 
 ## Files produced
 After the script completes, in the ``results`` folder you should see the following figures and tables from the paper:
-* Fig. 1, 3, 6, 8--23, 43--57
-* Tables 1--5, 12--56
+* Fig. 1b -- really? I thought this was manually created
+* Fig. 3 (``file.name``)
+* Fig. 6 (``file*.name``)
+* Fig. 8 (``file.name``)
+* Fig. 9--23 (``file*.name``)
+* Fig. 43--57 (``file*.name``)
+* Table 1 (``file.name``)
+* Table 2 (``file.name``)
+* Table 3 (``file.name``)
+* Table 4 (``file.name``)
+* Table 5 (``file.name``)
+* Tables 12--56 (``file*.name``)
