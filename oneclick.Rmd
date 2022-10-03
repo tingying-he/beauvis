@@ -544,22 +544,31 @@ APV.model ='aesthetic_pleasure =~ enjoyable + likable + pleasing + nice + appeal
 fit1 <- cfa(APV.model,data = data_sun,std.lv = TRUE)
 
 
-l1 <- lavInspect(fit1, what = "std.all", add.labels = TRUE, add.class = TRUE,
+l1 <- lavInspect(fit1, what = "std.all", add.labels = FALSE, add.class = TRUE,
            list.by.group = TRUE,
            drop.list.single.group = TRUE)[[1]]
 
 fit2 <- cfa(APV.model,data = data_star,std.lv = TRUE)
-l2 <- lavInspect(fit2, what = "std.all", add.labels = TRUE, add.class = TRUE,
+l2 <- lavInspect(fit2, what = "std.all", add.labels = FALSE, add.class = TRUE,
            list.by.group = TRUE,
            drop.list.single.group = TRUE)[[1]]
 
 fit3 <- cfa(APV.model,data = data_beam,std.lv = TRUE)
-l3 <- lavInspect(fit3, what = "std.all", add.labels = TRUE, add.class = TRUE,
+l3 <- lavInspect(fit3, what = "std.all", add.labels = FALSE, add.class = TRUE,
            list.by.group = TRUE,
            drop.list.single.group = TRUE)[[1]]
 
 df_factor_loading_cfa <- cbind(l1, l2, l3)
+
+
+colnames(df_factor_loading_cfa) <- c("SunBurst", "StarTree", "BeamTree")
+rownames(df_factor_loading_cfa) <- c("enjoyable", "likable", "pleasing", "nice","appealing")
+
+df_factor_loading_cfa <- as.data.frame(df_factor_loading_cfa)
+df_factor_loading_cfa <- mutate(df_factor_loading_cfa, across(where(is.numeric), round, 3))
+
 df_factor_loading_cfa
+write.table(df_factor_loading_cfa, paste("results/cfa_factor_loading.tsv",sep=""),row.names=TRUE,col.names=NA,sep='\t')
 ```
 
 
@@ -569,7 +578,12 @@ good_fit_star <- CFA(data_star)
 good_fit_beam <- CFA(data_beam)
 
 good_fit_table <- cbind(good_fit_sun, good_fit_star, good_fit_beam)
+
+good_fit_table <- as.data.frame(good_fit_table)
+good_fit_table <- mutate(good_fit_table, across(where(is.numeric), round, 3))
+
 good_fit_table 
+write.table(good_fit_table, paste("results/cfa_good_fit.tsv",sep=""),row.names=TRUE,col.names=NA,sep='\t')
 ```
 
 ## Convergent Validity
