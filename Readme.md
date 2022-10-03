@@ -44,10 +44,10 @@ The R script contained within this repository requires, in addition to a [normal
 * ``lavaan``
 * ``ltm``
 
-To install required packages, run the following script:
+To install these required packages, run the following call from a command line:
 ``Rscript -e "install.packages(c('png', 'psych', 'EFA.dimensions', 'imager', 'corrplot', 'knitr', 'kableExtra', 'xtable', 'dplyr', 'tibble', 'ggplot2', 'lavaan', 'ltm'), repos='https://cran.rstudio.com')"``
 
-## Running the script
+## Running the R script
 1. clone this repository ``git clone https://github.com/tingying-he/beauvis.git``
 2. change to the cloned directory ``cd beauvis``
 3. knit the ``oneclick.Rmd`` by running `` Rscript -e 'library(rmarkdown); rmarkdown::render("./oneclick.Rmd", "html_document")' ``
