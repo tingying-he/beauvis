@@ -53,18 +53,20 @@ To install these required packages, run the following call from a command line:
 3. knit the ``oneclick.Rmd`` by running `` Rscript -e 'library(rmarkdown); rmarkdown::render("./oneclick.Rmd", "html_document")' ``
 
 ## Files produced
-After the script completes, in the ``results`` folder you should see the following figures and tables from the paper:
+After the script completes, in the ``results`` folder you should see the following figures and tables [from the paper](https://tobias.isenberg.cc/personal/papers/He_2023_BVS.pdf):
 * Fig. 3 (``ScreePlot-Image_1 .pdf``)
 * Fig. 6a (``Image 2  Ratings Per Scale.pdf``)
 * Fig. 6b (``Image 9  Ratings Per Scale.pdf``)
 * Fig. 8 (``Average Rating for the 5 item scale.pdf``)
-* Fig. 9--23 (``ScreePlot-Image_* .pdf``)
-* Fig. 43--57 (``Image *  Ratings Per Scale.pdf``)
+* Fig. 9–23 (``ScreePlot-Image_* .pdf``)
+* Fig. 43–57 (``Image *  Ratings Per Scale.pdf``)
 * Table 1 (``factor_numbers.tsv``)
 * Table 2 (``cfa_good_fit.tsv``)
 * Table 3 (``cfa_factor_loading.tsv``)
 * Table 4 (``cfa_alpha.tsv``)
 * Table 5 (``cfa_pearson.tsv``)
-* Tables 12--26 (``efa_1factor_image*.tsv``)
+* Tables 12–26 (``efa_1factor_image*.tsv``)
 * Tables 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55 (``efa_2factors_varimax_image*.tsv``)
 * Tables 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56 (``efa_2factors_promax_image*.tsv``)
+
+Other images from the paper (i.e., Fig. 5, Fig. 24–27, Fig. 28–42) were created with the tool [Tableau](https://www.tableau.com/), so we could not script them.
