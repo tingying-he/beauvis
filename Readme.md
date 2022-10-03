@@ -29,7 +29,7 @@ Tingying He, Petra Isenberg, Raimund Dachselt, and Tobias Isenberg. BeauVis: A V
 https://tobias.isenberg.cc/VideosAndDemos/He2023BVS
 
 ## Requirements
-The R script requires, in addition to a [normal R installation](https://cran.r-project.org/), several packages including (potentially more):
+The R script contained within this repository requires, in addition to a [normal R installation](https://cran.r-project.org/), several packages including (potentially more):
 * ``png``
 * ``psych``
 * ``EFA.dimensions``
