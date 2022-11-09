@@ -48,9 +48,9 @@ To install these required packages, run the following call from a command line:
 ``Rscript -e "install.packages(c('png', 'psych', 'EFA.dimensions', 'imager', 'corrplot', 'knitr', 'kableExtra', 'xtable', 'dplyr', 'tibble', 'ggplot2', 'lavaan', 'ltm'), repos='https://cran.rstudio.com')"``
 
 ## Running the R script
-1. clone this repository ``git clone https://github.com/tingying-he/beauvis.git`` or downlaod codes through zip from the repository
+1. clone this repository ``git clone git@github.com:tingying-he/beauvis.git`` or downlaod codes through zip from the repository
 2. change to the cloned directory ``cd beauvis``
-3. knit the ``oneclick.Rmd`` by running `` Rscript -e 'library(rmarkdown); rmarkdown::render("./oneclick.Rmd", "html_document")' ``
+3. knit the ``oneclick.Rmd`` by running `` Rscript -e "library(rmarkdown); rmarkdown::render("./oneclick.Rmd", "html_document")" ``
 
 ## Files produced
 After the script completes, in the ``results`` folder you should see the following figures and tables [from the paper](https://tobias.isenberg.cc/personal/papers/He_2023_BVS.pdf):
