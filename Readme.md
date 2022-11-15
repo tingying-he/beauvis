@@ -29,6 +29,7 @@ Tingying He, Petra Isenberg, Raimund Dachselt, and Tobias Isenberg. BeauVis: A V
 https://tobias.isenberg.cc/VideosAndDemos/He2023BVS
 
 ## Requirements
+
 The R script contained within this repository requires, in addition to a [normal R installation](https://cran.r-project.org/), several packages including (potentially more):
 * ``png``
 * ``psych``
@@ -47,11 +48,14 @@ The R script contained within this repository requires, in addition to a [normal
 To install these required packages, run the following call from a command line:
 ``Rscript -e "install.packages(c('png', 'psych', 'EFA.dimensions', 'imager', 'corrplot', 'knitr', 'kableExtra', 'xtable', 'dplyr', 'tibble', 'ggplot2', 'lavaan', 'ltm'), repos='https://cran.rstudio.com')"``
 
+If you encounter problem with Pandoc:
+1. To check whether Pandoc was correctly installed: ``Rscript -e "rmarkdown::pandoc_exec()"``
+2. To install Pandoc from its official website: https://pandoc.org/installing.html . If you use macOS, you can also use Homebrew to install it: ``brew install pandoc``
+
 ## Running the R script
 1. clone this repository ``git clone git@github.com:tingying-he/beauvis.git`` or downlaod codes through zip from the repository
 2. change to the cloned directory ``cd beauvis``
-3. knit the ``oneclick.Rmd`` by running `` Rscript -e "library(rmarkdown); rmarkdown::render("./oneclick.Rmd", "html_document")" ``
-
+3. knit the ``oneclick.Rmd`` by running `` Rscript -e "library(rmarkdown); rmarkdown::render('./oneclick.Rmd', 'html_document')" ``
 ## Files produced
 After the script completes, in the ``results`` folder you should see the following figures and tables [from the paper](https://tobias.isenberg.cc/personal/papers/He_2023_BVS.pdf):
 * Fig. 3 (``ScreePlot-Image_1 .pdf``)
