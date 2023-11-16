@@ -30,8 +30,8 @@ Tingying He, Petra Isenberg, Raimund Dachselt, and Tobias Isenberg. BeauVis: A V
 ```
 
 ## Project websites
-* https://tobias.isenberg.cc/VideosAndDemos/He2023BVS
 * https://tingying-he.github.io/projects/He_2023_BeauVis.html
+* https://tobias.isenberg.cc/VideosAndDemos/He2023BVS
 * https://www.aviz.fr/Research/BeauVis-Scale
 
 ## Requirements
