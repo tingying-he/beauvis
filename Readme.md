@@ -11,6 +11,10 @@ Tingying He, Petra Isenberg, Raimund Dachselt, and Tobias Isenberg. BeauVis: A V
   title       = {{B}eau{V}is: A Validated Scale for Measuring the Aesthetic Pleasure of Visual Representations},
   journal     = {IEEE Transactions on Visualization and Computer Graphics},
   year        = {2023},
+  volume      = {29},
+  number      = {1},
+  month       = jan,
+  pages       = {363--373},
   doi         = {10.1109/TVCG.2022.3209390},
   doi_url     = {https://doi.org/10.1109/TVCG.2022.3209390},
   oa_hal_url  = {https://hal.inria.fr/hal-03763559},
@@ -18,15 +22,17 @@ Tingying He, Petra Isenberg, Raimund Dachselt, and Tobias Isenberg. BeauVis: A V
   osf_url     = {https://osf.io/fxs76/},
   osf_url2    = {https://osf.io/djrn3/},
   url         = {https://tobias.isenberg.cc/VideosAndDemos/He2023BVS},
-  url2        = {https://www.aviz.fr/Research/BeauVis-Scale},
+  url2        = {[https://www.aviz.fr/Research/BeauVis-Scale](https://tingying-he.github.io/projects/He_2023_BeauVis.html)},
+  url3        = {https://www.aviz.fr/Research/BeauVis-Scale},
   github_url  = {https://github.com/tingying-he/beauvis},
   pdf         = {https://tobias.isenberg.cc/personal/papers/He_2023_BVS.pdf},
-  note        = {To appear},
 }
 ```
 
-## Project website
-https://tobias.isenberg.cc/VideosAndDemos/He2023BVS
+## Project websites
+* https://tobias.isenberg.cc/VideosAndDemos/He2023BVS
+* https://tingying-he.github.io/projects/He_2023_BeauVis.html
+* https://www.aviz.fr/Research/BeauVis-Scale
 
 ## Requirements
 
