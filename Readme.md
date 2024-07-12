@@ -16,6 +16,7 @@ Tingying He, Petra Isenberg, Raimund Dachselt, and Tobias Isenberg. BeauVis: A V
   month       = jan,
   pages       = {363--373},
   doi         = {10.1109/TVCG.2022.3209390},
+  shortdoi    = {10/kt3n},
   doi_url     = {https://doi.org/10.1109/TVCG.2022.3209390},
   oa_hal_url  = {https://hal.inria.fr/hal-03763559},
   preprint    = {https://doi.org/10.48550/arXiv.2207.14147},
